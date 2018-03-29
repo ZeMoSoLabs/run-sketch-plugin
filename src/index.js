@@ -9,11 +9,13 @@ const makeCommand = ({ bundleURL, identifier }) => {
 
 const runPluginCommand = options =>
   new Promise((resolve, reject) => {
+    console.log('promise');
     exec(`"${coscript}" -e '${makeCommand(options)}'`, (err, stdout, stderr) => {
       if (err) {
+        console.log('error');
         reject(err);
       }
-
+      console.log('no error');
       resolve({ stdout, stderr });
     });
   });
